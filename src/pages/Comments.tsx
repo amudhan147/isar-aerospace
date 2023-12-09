@@ -18,7 +18,7 @@ const Comments = () => {
             </Typography>
             <List>
                 {comments.map((comment) => (
-                    <ListItem>
+                    <ListItem key={comment.id}>
                         <ListItemText primary={comment.text} />
                     </ListItem>
                 ))}
