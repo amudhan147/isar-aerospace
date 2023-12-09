@@ -42,7 +42,7 @@ export default function AscendComp({ title, icon, bool, color = 'primary' }: {
                 bgcolor: 'white',
             }}>
             <Box sx={{ ml: 3, color: 'common.white' }}>
-                <Typography variant="h5" sx={{ color: 'black', opacity: 0.72, }}> {title}</Typography>
+                <Typography variant="h5" sx={{ color: 'black', opacity: 0.72, }}> {title}: {bool === true ? 'true' : 'false'}</Typography>
             </Box>
             {bool ? <IconStyle icon={icon} sx={undefined} /> : <IconStyle icon={icon} sx={undefined} rotate={2} />}
         </RootStyle>

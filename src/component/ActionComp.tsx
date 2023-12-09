@@ -56,7 +56,6 @@ export default function AscendComp({ title, icon, bool, color = 'primary' }: {
             }}>
             {bool === "true" && <BlinkingDiv>
             </BlinkingDiv>}
-            {/* <Box sx={{ color: 'common.white' }}> */}
             <Typography variant="h5" sx={{ color: 'black', opacity: 0.72 }}>
                 {title}: {bool === "true" ? "true" : "false"}
             </Typography>
@@ -67,7 +66,6 @@ export default function AscendComp({ title, icon, bool, color = 'primary' }: {
                 sx={{ p: 1.5, marginTop: '20px', alignItems: 'center', justifyContent: 'center', position: 'relative', }}
             >Current Status
             </Button>
-            {/* </Box> */}
 
         </RootStyle >
     );

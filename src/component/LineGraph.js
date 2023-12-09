@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
-import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import BaseOptionChart from './Chart';
+import { Box } from '@mui/material';
 
 export default function LineGraph({ data, title }) {
 
@@ -24,9 +24,9 @@ export default function LineGraph({ data, title }) {
     return (
         <>
             {CHART_DATA.map((item, index) => (
-                <React.Fragment key={index} dir="ltr">
+                <Box key={index} dir="ltr">
                     <ReactApexChart type="line" series={item.data} options={chartOptions} height={200} width={380} />
-                </React.Fragment>
+                </Box>
             ))}
         </>
     );

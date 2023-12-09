@@ -29,7 +29,7 @@ const BlinkingDiv = styled('div')({
     animationIterationCount: 'infinite',
     position: 'absolute',
     top: '10px',
-    right: '80px',
+    left: '10px',
 
     '@keyframes blink': {
         '50%': {
@@ -64,7 +64,7 @@ export default function OptionComp({ title, icon, bool, color = 'primary' }: {
                 variant='contained'
                 onClick={() => dispatch(getTakeAction({}))}
                 fullWidth
-                sx={{ p: 1.5, marginTop: '10px', alignItems: 'center', justifyContent: 'center', position: 'relative', }}
+                sx={{ p: 1.5, marginTop: '20px', alignItems: 'center', justifyContent: 'center', position: 'relative', }}
             >Take Action
             </Button>}
 
