@@ -23,7 +23,6 @@ const IconStyle = styled(Iconify)(({ theme }) => ({
     opacity: 0.72,
     position: 'absolute',
     right: theme.spacing(5),
-    // color: theme.palette.common.white,
 }));
 
 // ----------------------------------------------------------------------
