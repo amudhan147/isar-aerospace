@@ -10,15 +10,6 @@ import LineGraph from './LineGraph';
 // ----------------------------------------------------------------------
 
 
-// type CardComponentProps = {
-//     menuSelectionProp: string;
-// } & CardProps;
-
-
-// ----------------------------------------------------------------------
-
-import { } from '@mui/material/Card';
-
 type CustomCardProps = {
     menuselectionprop: string;
 } & CardProps & CardOwnProps;
