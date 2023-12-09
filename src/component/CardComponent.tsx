@@ -1,6 +1,6 @@
 // @mui
 import { useTheme, styled } from '@mui/material/styles';
-import { Card, CardProps, Typography, Box, IconButton, Menu, MenuItem } from '@mui/material';
+import { Card, CardProps, CardOwnProps, Typography, Box, IconButton, Menu, MenuItem } from '@mui/material';
 // components
 import Iconify from './iconify';
 import React, { useEffect } from 'react';
@@ -10,21 +10,27 @@ import LineGraph from './LineGraph';
 // ----------------------------------------------------------------------
 
 
-type CardComponentProps = {
-    menuSelection: string;
-} & CardProps;
+// type CardComponentProps = {
+//     menuSelectionProp: string;
+// } & CardProps;
 
 
 // ----------------------------------------------------------------------
 
-const RootStyle = styled(Card)<CardComponentProps>(({ theme, menuSelection }) => ({
+import { } from '@mui/material/Card';
+
+type CustomCardProps = {
+    menuselectionprop: string;
+} & CardProps & CardOwnProps;
+
+const RootStyle = styled(Card)<CustomCardProps>(({ theme, menuselectionprop }) => ({
     display: 'flex',
     position: 'relative',
     alignItems: 'center',
-    paddingTop: menuSelection === "Card" ? theme.spacing(12) : theme.spacing(3),
-    paddingBottom: menuSelection === "Card" ? theme.spacing(12) : theme.spacing(3),
-    paddingLeft: menuSelection === "Card" ? theme.spacing(3) : theme.spacing(1),
-    paddingRight: menuSelection === "Card" ? theme.spacing(3) : theme.spacing(1),
+    paddingTop: menuselectionprop === "Card" ? theme.spacing(12) : theme.spacing(3),
+    paddingBottom: menuselectionprop === "Card" ? theme.spacing(12) : theme.spacing(3),
+    paddingLeft: menuselectionprop === "Card" ? theme.spacing(3) : theme.spacing(1),
+    paddingRight: menuselectionprop === "Card" ? theme.spacing(3) : theme.spacing(1),
     backgroundColor: theme.palette.common.white,
 }));
 
@@ -73,12 +79,11 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
                         timestamp.setSeconds(timestamp.getSeconds() - 1);
                         const dd = String(timestamp.getDate()).padStart(2, '0');
                         const mm = String(timestamp.getMonth() + 1).padStart(2, '0');
-                        // const yy = String(timestamp.getFullYear()).slice(-2);
                         const hh = String(timestamp.getHours()).padStart(2, '0');
                         const ss = String(timestamp.getSeconds()).padStart(2, '0');
                         return `${dd}-${mm} ${hh}:${ss}`;
-                    })()]
-
+                    })(),
+                ],
             }));
         }
     }, [total]);
@@ -100,7 +105,7 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
     ];
 
     return (
-        <RootStyle menuSelection={menuSelection}>
+        <RootStyle menuselectionprop={menuSelection}>
             <IconButton
                 aria-label="more"
                 id="long-button"
