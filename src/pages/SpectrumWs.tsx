@@ -285,7 +285,7 @@ function SpectrumWs() {
 
         socket.onclose = (event) => {
             if (event.wasClean) {
-                console.log(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
+                console.error(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
                 setIsWebSocketConnected(true);
             } else {
                 console.error('Connection died');
