@@ -1,9 +1,9 @@
-Getting Started
-Clone the repository to your local machine.
-Install dependencies using npm install.
-Run the application with ### `npm start`.
-Access the application at http://localhost:3000 in your web browser.
-Feel free to reach out for any questions or improvements!
+### `Getting Started`
+1. Clone the repository to your local machine.
+2. Install dependencies using `npm install`.
+3. Run the application with  `npm start`.
+4. Access the application at `http://localhost:3000` in your web browser.
+5. Feel free to reach out for any questions or improvements!
 
 ### `npm test`
 
