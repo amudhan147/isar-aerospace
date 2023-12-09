@@ -6,6 +6,7 @@ import { ThemeProvider } from '@emotion/react';
 import theme from './theme';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,7 +15,9 @@ root.render(
   <React.Fragment>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ThemeProvider>
     </Provider>
   </React.Fragment>

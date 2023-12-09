@@ -1,6 +1,6 @@
 // @mui
-import { useTheme, styled } from '@mui/material/styles';
-import { Card, Typography, Box, IconButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Card, Typography, Box } from '@mui/material';
 // components
 import Iconify from './iconify';
 
@@ -35,7 +35,7 @@ export default function AscendComp({ title, icon, bool, color = 'primary' }: {
     color?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
     bool: boolean | undefined;
 }) {
-    const theme = useTheme();
+
     return (
         <RootStyle
             sx={{
