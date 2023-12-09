@@ -1,7 +1,6 @@
 import merge from 'lodash/merge';
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { Box } from '@mui/material';
 import BaseOptionChart from './Chart';
 
 export default function LineGraph({ data, title }) {

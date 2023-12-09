@@ -1,6 +1,6 @@
 // @mui
 import { useTheme, styled } from '@mui/material/styles';
-import { Card, CardProps, Typography, Box, IconButton, Menu, MenuItem, CardHeader } from '@mui/material';
+import { Card, CardProps, Typography, Box, IconButton, Menu, MenuItem } from '@mui/material';
 // components
 import Iconify from './iconify';
 import React, { useEffect } from 'react';
