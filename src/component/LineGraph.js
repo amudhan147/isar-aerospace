@@ -4,12 +4,12 @@ import ReactApexChart from 'react-apexcharts';
 import { Box } from '@mui/material';
 import BaseOptionChart from './Chart';
 
-export default function LineGraph({ data }) {
+export default function LineGraph({ data, title }) {
 
     const CHART_DATA = [
         {
             data: [
-                { name: 'yaxis', data: data.x },
+                { name: title, data: data.x },
             ],
         },
     ];
@@ -25,10 +25,8 @@ export default function LineGraph({ data }) {
     return (
         <>
             {CHART_DATA.map((item, index) => (
-                <React.Fragment key={index}>
-                    <Box key={index} sx={{ mt: 1, mx: 1 }} dir="ltr">
-                        <ReactApexChart type="line" series={item.data} options={chartOptions} height={200} />
-                    </Box>
+                <React.Fragment key={index} dir="ltr">
+                    <ReactApexChart type="line" series={item.data} options={chartOptions} height={200} width={380} />
                 </React.Fragment>
             ))}
         </>

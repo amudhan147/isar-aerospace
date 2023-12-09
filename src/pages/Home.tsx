@@ -11,13 +11,13 @@ const Home = () => {
             </Typography>
             <Grid container spacing={1} m={5}>
                 <Grid item xs={12}>
-                    <Link sx={{ fontSize: 'h5' }} onClick={() => navigate('/spectrumStatus')}>Spectrum Status</Link>
+                    <Link sx={{ fontSize: 'h5', cursor: 'pointer' }} onClick={() => navigate('/spectrumStatus')}>Spectrum Status</Link>
                 </Grid>
                 <Grid item xs={12}>
-                    <Link onClick={() => navigate('/spectrumWs')}>Spectrum WS</Link>
+                    <Link sx={{ fontSize: 'h5', cursor: 'pointer' }} onClick={() => navigate('/spectrumWs')}>Spectrum WS</Link>
                 </Grid>
                 <Grid item xs={12}>
-                    <Link onClick={() => navigate('/comments')}>Comments for api improvements</Link>
+                    <Link sx={{ fontSize: 'h5', cursor: 'pointer' }} onClick={() => navigate('/comments')}>Comments for api improvements</Link>
                 </Grid>
             </Grid>
         </React.Fragment>

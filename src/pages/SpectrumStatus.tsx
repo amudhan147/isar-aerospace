@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import CardComp from '../component/CardComponent';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { getSpectrumData, getSpectrumStatus, } from '../redux/slice/spectrumStatus-Slice';
@@ -55,7 +55,10 @@ function SpectrumStatus() {
 
     return (
         <React.Fragment>
-            <Grid container spacing={3} marginTop={1}>
+            <Typography variant="h4" sx={{ color: 'black', padding: 1 }}>
+                Spectrum Status
+            </Typography>
+            <Grid container spacing={3}>
                 <Grid item xs={4}>
                     <CardComp
                         title="Velocity"

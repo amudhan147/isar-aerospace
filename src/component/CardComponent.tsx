@@ -1,6 +1,6 @@
 // @mui
 import { useTheme, styled } from '@mui/material/styles';
-import { Card, Typography, Box, IconButton, Menu, MenuItem, CardHeader } from '@mui/material';
+import { Card, CardProps, Typography, Box, IconButton, Menu, MenuItem, CardHeader } from '@mui/material';
 // components
 import Iconify from './iconify';
 import React, { useEffect } from 'react';
@@ -9,15 +9,24 @@ import LineGraph from './LineGraph';
 
 // ----------------------------------------------------------------------
 
-const RootStyle = styled(Card)(({ theme }) => ({
+// import {  } from '@mui/material';
+
+type CardComponentProps = {
+    menuSelection: string;
+} & CardProps;
+
+
+// ----------------------------------------------------------------------
+
+const RootStyle = styled(Card)<CardComponentProps>(({ theme, menuSelection }) => ({
     display: 'flex',
     position: 'relative',
     alignItems: 'center',
-    paddingTop: theme.spacing(12),
-    paddingBottom: theme.spacing(12),
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
-    backgroundColor: theme.palette.primary.light,
+    paddingTop: menuSelection === "Card" ? theme.spacing(12) : theme.spacing(3),
+    paddingBottom: menuSelection === "Card" ? theme.spacing(12) : theme.spacing(3),
+    paddingLeft: menuSelection === "Card" ? theme.spacing(3) : theme.spacing(1),
+    paddingRight: menuSelection === "Card" ? theme.spacing(3) : theme.spacing(1),
+    backgroundColor: theme.palette.common.white,
 }));
 
 const IconStyle = styled(Iconify)(({ theme }) => ({
@@ -49,12 +58,11 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
 
     const open = Boolean(anchorEl);
 
-
     useEffect(() => {
         if (graphData.x.length > 5) {
             setGraphData((prev) => ({
-                x: prev.x.slice(3),
-                y: prev.y.slice(3),
+                x: prev.x.slice(1),
+                y: prev.y.slice(1),
             }));
         } else {
             setGraphData((prev) => ({
@@ -65,11 +73,11 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
                         const timestamp = new Date();
                         timestamp.setSeconds(timestamp.getSeconds() - 1);
                         const dd = String(timestamp.getDate()).padStart(2, '0');
-                        // const mm = String(timestamp.getMonth() + 1).padStart(2, '0');
-                        const yy = String(timestamp.getFullYear()).slice(-2);
+                        const mm = String(timestamp.getMonth() + 1).padStart(2, '0');
+                        // const yy = String(timestamp.getFullYear()).slice(-2);
                         const hh = String(timestamp.getHours()).padStart(2, '0');
                         const ss = String(timestamp.getSeconds()).padStart(2, '0');
-                        return `${dd}-${yy} ${hh}:${ss}`;
+                        return `${dd}-${mm} ${hh}:${ss}`;
                     })()]
 
             }));
@@ -83,7 +91,6 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
     };
 
     const handleSelect = (menu: string) => {
-        console.log(menu);
         setMenuSelection(menu);
         setAnchorEl(null);
     };
@@ -92,18 +99,9 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
         'Line Graph',
         'Card'
     ];
+
     return (
-        <React.Fragment>
-            {menuSelection === "Card" && <RootStyle sx={{ bgcolor: 'white' }}>
-                <Box sx={{ ml: 3, color: 'common.white' }}>
-                    <Typography variant="h5" sx={{ color: 'black', opacity: 0.72, }}> {title}</Typography>
-                    <Typography variant="h5" sx={{ opacity: 0.72, color: 'black' }}>
-                        <b>{`${total?.toFixed(4)} ${unit}` ?? 'N/A'}</b>
-                    </Typography>
-                </Box>
-                <IconStyle icon={icon} sx={undefined} />
-            </RootStyle>
-            }
+        <RootStyle menuSelection={menuSelection}>
             <IconButton
                 aria-label="more"
                 id="long-button"
@@ -111,11 +109,10 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
                 onClick={handleClick}
-                sx={{ position: 'absolute', top: 35, ml: 45, zIndex: 1000 }}
+                sx={{ position: 'absolute', zIndex: 1000, top: 0, right: 0 }}
             >
                 <Iconify icon={"mi:options-vertical"} sx={undefined} color={theme.palette.info} />
             </IconButton>
-
             <Menu
                 id="long-menu"
                 MenuListProps={{
@@ -123,7 +120,7 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
                 }}
                 anchorEl={anchorEl}
                 open={open}
-                // onClose={handleClose}
+                onClose={() => setAnchorEl(null)}
                 PaperProps={{
                     style: {
                         maxHeight: ITEM_HEIGHT * 4.5,
@@ -137,10 +134,22 @@ export default function CardComponent({ title, total, icon, unit, color = 'prima
                     </MenuItem>
                 ))}
             </Menu>
-            {menuSelection === 'Line Graph' && <Card>
-                <CardHeader title={title} />
-                <LineGraph data={graphData} />
-            </Card>}
-        </React.Fragment>
+            {menuSelection === "Card" &&
+                <>
+                    <Box sx={{ ml: 3, color: 'common.white' }}>
+                        <Typography variant="h5" sx={{ color: 'black', opacity: 0.72, }}> {title}</Typography>
+                        <Typography variant="h5" sx={{ opacity: 0.72, color: 'black' }}>
+                            <b>{`${total?.toFixed(4)} ${unit}` ?? 'N/A'}</b>
+                        </Typography>
+                    </Box>
+                    <IconStyle icon={icon} sx={undefined} />
+                </>}
+
+            {menuSelection === 'Line Graph' &&
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant="h5" sx={{ color: 'black', opacity: 0.72, ml: 5 }}> {title}</Typography>
+                    <LineGraph data={graphData} title={title} />
+                </Box>}
+        </RootStyle >
     );
 }

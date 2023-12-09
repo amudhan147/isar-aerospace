@@ -14,7 +14,7 @@ const RootStyle = styled(Card)(({ theme }) => ({
     paddingBottom: theme.spacing(7.5),
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.common.white,
 }));
 
 
@@ -32,7 +32,7 @@ export default function CardComponent({ icon, message, color = 'info' }: {
     return (
         <RootStyle
             sx={{
-                bgcolor: 'InfoBackground',
+                bgcolor: 'white',
             }}>
             <Box sx={{ ml: 3, color: 'common.white' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Grid, Snackbar, Slide, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Alert, Grid, Snackbar, Slide, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography } from '@mui/material';
 import CardComp from '../component/CardComponent';
 import AscendComp from '../component/AscendComp';
 import StatusCard from '../component/StatusCard';
@@ -128,7 +128,10 @@ function SpectrumWs() {
                     {snackBarMessage.desc}
                 </Alert>
             </Snackbar>
-            <Grid container spacing={3} marginTop={1}>
+            <Typography variant="h4" sx={{ color: 'black', padding: 1 }}>
+                Spectrum Websocket
+            </Typography>
+            <Grid container spacing={3}>
                 <Grid item xs={4}>
                     <CardComp
                         title="Velocity"
